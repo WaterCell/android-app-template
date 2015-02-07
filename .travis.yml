@@ -1,5 +1,5 @@
 language: android
-jdk: oraclejdk7
+jdk: oraclejdk8
 android:
   components:
   - extra-android-m2repository
@@ -7,7 +7,7 @@ android:
   - build-tools-21.1.1
   - android-18
 script:
-  - "./gradlew clean testDebug"
+  - "./gradlew clean test"
 after_script:
   - "ls app/build"
   - "cat cat app/build/test-report/debug/classes/jp.water_cell.android.template.MainActivityRobolectricTest.html"
