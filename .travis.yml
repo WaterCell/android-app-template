@@ -10,3 +10,13 @@ android:
 
 script:
     - ./gradlew test
+
+after_script:
+  - ./.travis.sh publish_report
+
+env:
+  global:
+    - TERM=dumb
+    - GH_BUILD_REPORT=Nkzn/test-result
+    - secure: "HtYXo1+FKq1WJgK082hQnjK8e4EWGOqYHY1UmKemD/fXSkwS6848EsBazMf4kZAsoMoNRYsYaj/Z7EIEdCPDxmdgXh/xXUBAPTI9fQmK4CR+FMauwWeWTYiGwhvF67/Yx/Qybqg7HjjO9F2gPpyaL7mVXe0vqA8QllakvzJdrp8="
+    - secure: "iaEBUdx7+m88v6LO2T0gHoQ1jXdTVvqSYNbXKvi7AkcQUqHqBU7FxEREcyxzaKStF0ySJ8B3z06WAo9zbtkN/XeiRzAwZ7AKTd0w7Fe5yr2vkjS+oHTEJaG+UvBQCAvBLOi5hFiO1Lm/Sp6WN2EAKpt2ZiRtP5J/ATrPtRnLcTM="
