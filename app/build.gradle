@@ -1,7 +1,7 @@
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
-apply plugin: 'io.fabric'
+//apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -18,7 +18,7 @@ android {
 
         multiDexEnabled true
 
-        manifestPlaceholders = [crashlytics_api_key: 'CrashlyticsのAPIキーをここに書く']
+//        manifestPlaceholders = [crashlytics_api_key: 'CrashlyticsのAPIキーをここに書く']
     }
 
     compileOptions {
@@ -96,9 +96,9 @@ dependencies {
     compile "net.vvakame:jsonpullparser-core:${project.jppVersion}"
     apt "net.vvakame:jsonpullparser-apt:${project.jppVersion}"
 
-    compile("com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar") {
-        transitive = true;
-    }
+//    compile("com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar") {
+//        transitive = true;
+//    }
 
     compile "com.squareup.okhttp:okhttp:${project.okhttpVersion}"
     compile "com.squareup.okhttp:okhttp-urlconnection:${project.okhttpVersion}"
