@@ -10,4 +10,4 @@ script:
   - "./gradlew test"
 after_script:
   - "ls app/build"
-  - "cat app/build/test-report/debug/index.html"
+  - "cat cat app/build/test-report/debug/classes/jp.water_cell.android.template.MainActivityRobolectricTest.html"
