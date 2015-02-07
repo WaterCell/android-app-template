@@ -15,7 +15,9 @@ function publish_report () {
         git rm -q -r "$TRAVIS_BRANCH" || true
         mkdir -p "$TRAVIS_BRANCH"
 
-        [ -d ../app/build/test-report ] && cp -a ../app/build/test-report "$TRAVIS_BRANCH"
+	pwd
+
+        [ -d ./app/build/test-report ] && cp -a ./app/build/test-report "$TRAVIS_BRANCH"
         git add "$TRAVIS_BRANCH"
 
         grep "$TRAVIS_BRANCH" branch-list || echo "$TRAVIS_BRANCH" >> branch-list
