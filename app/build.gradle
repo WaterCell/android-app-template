@@ -1,0 +1,153 @@
+apply plugin: 'android-sdk-manager'
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "jp.water_cell.android.template"
+        minSdkVersion 15
+        targetSdkVersion 18 // 19以上はRobolectricが未対応
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+        manifestPlaceholders = [crashlytics_api_key: 'CrashlyticsのAPIキーをここに書く']
+    }
+
+    compileOptions {
+        encoding = 'UTF-8'
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        abortOnError true
+        checkAllWarnings true
+        warningsAsErrors true
+        checkReleaseBuilds true
+    }
+
+    packagingOptions {
+        // exclude duplicate files in apache commons
+        // pickFirst なら最初に見つけたやつが apk に入る
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'LICENSE.txt'
+    }
+
+    signingConfigs {
+        release
+    }
+
+    buildTypes {
+        debug {
+            versionNameSuffix '-debug'
+            applicationIdSuffix '.debug'
+
+            manifestPlaceholders = [google_maps_key: 'デバッグ用の証明書に対応するAPIキーをここに書く']
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // gradle.properties にリリース署名用の設定があれば署名を有効化します。
+            if (project.hasProperty('storeFile')) {
+                signingConfig signingConfigs.release
+            }
+
+            manifestPlaceholders = [google_maps_key: 'リリース用の証明書に対応するAPIキーをここに書く']
+        }
+    }
+}
+
+if (project.hasProperty('storeFile')) {
+    android.signingConfigs.release.storeFile = file(storeFile)
+}
+if (project.hasProperty('storePassword')) {
+    android.signingConfigs.release.storePassword = storePassword
+}
+if (project.hasProperty('keyAlias')) {
+    android.signingConfigs.release.keyAlias = keyAlias
+}
+if (project.hasProperty('keyPassword')) {
+    android.signingConfigs.release.keyPassword = keyPassword
+}
+
+tasks.withType(Test).whenTaskAdded {
+    // play sevicesのVerifyError回避 (see https://github.com/robolectric/robolectric/issues/1186#issuecomment-53778180)
+    it.jvmArgs '-noverify'
+}
+
+dependencies {
+    compile "com.google.android.gms:play-services:${project.playServicesVersion}"
+    compile "com.android.support:appcompat-v7:${project.supportPackageVersion}"
+
+    compile "net.vvakame:jsonpullparser-core:${project.jppVersion}"
+    apt "net.vvakame:jsonpullparser-apt:${project.jppVersion}"
+
+    compile("com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar") {
+        transitive = true;
+    }
+
+    compile "com.squareup.okhttp:okhttp:${project.okhttpVersion}"
+    compile "com.squareup.okhttp:okhttp-urlconnection:${project.okhttpVersion}"
+    compile "com.squareup.picasso:picasso:${project.picassoVersion}"
+
+    compile "joda-time:joda-time:${project.jodaTimeVersion}"
+
+    compile "com.github.chrisbanes.photoview:library:${project.photoViewVersion}"
+
+    compile "com.jakewharton:butterknife:${project.butterKnifeVersion}"
+    apt "com.jakewharton:butterknife:${project.butterKnifeVersion}"
+
+    compile "de.greenrobot:eventbus:${project.eventbusVersion}"
+}
+
+// Copied from https://github.com/robolectric/deckard-gradle/blob/master/build.gradle
+apply plugin: 'android-unit-test'
+
+dependencies {
+    repositories {
+        mavenCentral()
+    }
+
+    // Espresso
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${project.espressoVersion}")
+    androidTestCompile("com.android.support.test:testing-support-lib:${project.testingSupportVersion}")
+
+    // Robolectric
+    testCompile "junit:junit:${project.junitVersion}"
+    testCompile "org.hamcrest:hamcrest-core:${project.hamcrestVersion}"
+    testCompile "org.hamcrest:hamcrest-library:${project.hamcrestVersion}"
+    testCompile "org.hamcrest:hamcrest-integration:${project.hamcrestVersion}"
+
+    // TODO: requires special build of robolectric right now. working on this...
+    testCompile("org.robolectric:robolectric:${project.robolectricVersion}") {
+        exclude module: 'classworlds'
+        exclude module: 'commons-logging'
+        exclude module: 'httpclient'
+        exclude module: 'maven-artifact'
+        exclude module: 'maven-artifact-manager'
+        exclude module: 'maven-error-diagnostics'
+        exclude module: 'maven-model'
+        exclude module: 'maven-project'
+        exclude module: 'maven-settings'
+        exclude module: 'plexus-container-default'
+        exclude module: 'plexus-interpolation'
+        exclude module: 'plexus-utils'
+        exclude module: 'wagon-file'
+        exclude module: 'wagon-http-lightweight'
+        exclude module: 'wagon-provider-api'
+    }
+}

@@ -1,0 +1,25 @@
+local.properties
+
+# for gradle, IDEA
+.gradle
+build/
+*.iml
+!.idea/runConfigurations/*
+.idea/*.xml
+.idea/.name
+.idea/copyright/
+.idea/libraries/
+.idea/scopes/
+.idea/inspectionProfiles/
+.idea/dictionaries/
+
+# for eclipse
+bin
+gen
+.classpath
+.project
+
+# for Crashlytics
+crashlytics.properties
+com_crashlytics_export_strings.xml
+crashlytics-build.properties

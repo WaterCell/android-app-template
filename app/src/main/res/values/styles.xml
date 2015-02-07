@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
+
+    <style name="AppThemeBase" parent="BaseTheme">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppThemeBase">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- その他の色のカスタマイズについては https://developer.android.com/training/material/theme.html 参照 -->
+        <!-- また、 http://android-developers.blogspot.de/2014/10/appcompat-v21-material-design-for-pre.html も読んだほうがいい -->
+
+        <!-- Toolbar を使用するので ActionBar、 タイトルバーは非表示に -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+</resources>

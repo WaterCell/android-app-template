@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Robolectric -->
+    <issue id="OldTargetApi" severity="ignore" />
+
+    <!-- Crashlytics -->
+    <issue id="all">
+        <ignore path="src/main/res/values/com_crashlytics_export_strings.xml" />
+    </issue>
+    <issue id="UnusedResources">
+        <ignore path="build/generated/res/*" />
+    </issue>
+
+    <!-- Okio -->
+    <issue id="InvalidPackage">
+        <ignore path="**/com.squareup.okio/okio/**" />
+    </issue>
+</lint>
