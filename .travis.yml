@@ -1,12 +1,22 @@
 language: android
 jdk: oraclejdk7
-
 android:
   components:
-    - extra-android-m2repository
-    - extra-google-m2repository
-    - build-tools-21.1.1
-    - android-18
-
+  - extra-android-m2repository
+  - extra-google-m2repository
+  - build-tools-21.1.1
+  - android-18
 script:
-    - ./gradlew test
+- "./gradlew test"
+deploy:
+  provider: s3
+  access_key_id: AKIAJ32UDOMQ5I6D2PKQ
+  secret_access_key:
+    secure: jDE4UoE4YAAVIwpmF2sRxJjqMzNdCt6bri4AOx+VgpY3aJQk0pX91IKtHrk3KoOfgAPqB83ppfFP+bLqF46sbVhwxgW/RvqNeNNj+vMWIJOAgwu4+94jp1wqK5VMLn+r5Ihosa9P1Wy4Ro5aaqeJfdEUkRg59wjkY+VKjNvZ3XQ=
+  bucket: github.nkzn.info
+  local-dir: app/build/test-report
+  upload-dir: android-app-template/app/build/test-report
+  acl: private
+  on:
+    repo: WaterCell/android-app-template
+    branch: enable-travis
