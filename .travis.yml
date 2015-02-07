@@ -9,5 +9,5 @@ android:
 script:
   - "./gradlew test"
 after_script:
-  - "pwd;ls"
-  - "echo app/build/test-report/debug/index.html"
+  - "ls app/build"
+  - "cat app/build/test-report/debug/index.html"
