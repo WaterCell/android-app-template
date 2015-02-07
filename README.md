@@ -61,7 +61,7 @@ $ ./gradlew lint[build_variant]
 
 https://get.fabric.io/crashlytics
 
-正規のAPI KEYをセットしてないとエラーになるので、 https://github.com/WaterCell/android-app-template/commit/793078a457d1d56457bd0b02a296436225fb6da8 でコメントアウトしました。
+正規のAPI KEYをセットしてないとエラーになるので、 [793078a](https://github.com/WaterCell/android-app-template/commit/793078a457d1d56457bd0b02a296436225fb6da8) でコメントアウトしました。
 使うときは手動でコメントを外すか、 `git revert 793078a` で戻してください。
 
 ## Special Thanks
