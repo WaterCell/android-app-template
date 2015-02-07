@@ -61,12 +61,8 @@ $ ./gradlew lint[build_variant]
 
 https://get.fabric.io/crashlytics
 
-正規のAPI KEYをセットしてないとエラーになるので、 793078a でコメントアウトしてあります。
-下記のファイル内を"crashlytics"と"fabric"で検索して出てきた箇所のコメントアウトを外すと、利用できるようになります。
-
-* `build.gradle`
-* `app/build.gradle`
-* `app/src/main/AndroidManifest.xml`
+正規のAPI KEYをセットしてないとエラーになるので、 https://github.com/WaterCell/android-app-template/commit/793078a457d1d56457bd0b02a296436225fb6da8 でコメントアウトしました。
+使うときは手動でコメントを外すか、 `git revert 793078a` で戻してください。
 
 ## Special Thanks
 
