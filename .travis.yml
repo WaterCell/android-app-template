@@ -16,7 +16,6 @@ after_script:
       secure: jDE4UoE4YAAVIwpmF2sRxJjqMzNdCt6bri4AOx+VgpY3aJQk0pX91IKtHrk3KoOfgAPqB83ppfFP+bLqF46sbVhwxgW/RvqNeNNj+vMWIJOAgwu4+94jp1wqK5VMLn+r5Ihosa9P1Wy4Ro5aaqeJfdEUkRg59wjkY+VKjNvZ3XQ=
     bucket: github.nkzn.info
     skip_cleanup: true
-    region: ap-northeast-1
     local-dir: app/build/test-report
     upload-dir: android-app-template/app/build/test-report
     acl: private
