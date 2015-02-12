@@ -84,11 +84,6 @@ if (project.hasProperty('keyPassword')) {
     android.signingConfigs.release.keyPassword = keyPassword
 }
 
-tasks.withType(Test).whenTaskAdded {
-    // play sevicesのVerifyError回避 (see https://github.com/robolectric/robolectric/issues/1186#issuecomment-53778180)
-    it.jvmArgs '-noverify'
-}
-
 dependencies {
     compile "com.google.android.gms:play-services:${project.playServicesVersion}"
     compile "com.android.support:appcompat-v7:${project.supportPackageVersion}"
@@ -118,21 +113,26 @@ dependencies {
 apply plugin: 'android-unit-test'
 
 dependencies {
-    repositories {
-        mavenCentral()
+    // Espresso
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${project.espressoVersion}") {
+        exclude module: 'hamcrest-core'
+        exclude module: 'hamcrest-integration'
+        exclude module: 'hamcrest-library'
+        exclude module: 'junit-dep'
+    }
+    androidTestCompile("com.android.support.test:testing-support-lib:${project.testingSupportVersion}") {
+        exclude module: 'hamcrest-core'
+        exclude module: 'junit-dep'
     }
 
-    // Espresso
-    androidTestCompile("com.android.support.test.espresso:espresso-core:${project.espressoVersion}")
-    androidTestCompile("com.android.support.test:testing-support-lib:${project.testingSupportVersion}")
-
     // Robolectric
-    testCompile "junit:junit:${project.junitVersion}"
+    testCompile("junit:junit:${project.junitVersion}") {
+        exclude module: 'hamcrest-core'
+    }
     testCompile "org.hamcrest:hamcrest-core:${project.hamcrestVersion}"
     testCompile "org.hamcrest:hamcrest-library:${project.hamcrestVersion}"
     testCompile "org.hamcrest:hamcrest-integration:${project.hamcrestVersion}"
 
-    // TODO: requires special build of robolectric right now. working on this...
     testCompile("org.robolectric:robolectric:${project.robolectricVersion}") {
         exclude module: 'classworlds'
         exclude module: 'commons-logging'
@@ -150,4 +150,9 @@ dependencies {
         exclude module: 'wagon-http-lightweight'
         exclude module: 'wagon-provider-api'
     }
+}
+
+tasks.withType(Test).whenTaskAdded {
+    // play sevicesのVerifyError回避 (see https://github.com/robolectric/robolectric/issues/1186#issuecomment-53778180)
+    it.jvmArgs '-noverify'
 }
