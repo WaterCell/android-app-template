@@ -15,9 +15,9 @@ Androidアプリのテンプレートです。
 * [PhotoView](https://github.com/chrisbanes/PhotoView)
 * [Butter Knife](http://jakewharton.github.io/butterknife/)
 * [EventBus](https://github.com/greenrobot/EventBus)
-* JUnit
-* Robolectric
-* Espresso
+* JUnit4
+* [Robolectric](http://robolectric.org/)
+* [Espresso](https://code.google.com/p/android-test-kit/wiki/Espresso)
 
 ## テスト
 
