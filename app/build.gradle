@@ -114,30 +114,11 @@ apply plugin: 'android-unit-test'
 
 dependencies {
     // Espresso
-    androidTestCompile("com.android.support.test.espresso:espresso-core:${project.espressoVersion}") {
-        exclude module: 'hamcrest-core'
-        exclude module: 'hamcrest-integration'
-        exclude module: 'hamcrest-library'
-        exclude module: 'junit-dep'
-    }
-    androidTestCompile("com.android.support.test:testing-support-lib:${project.testingSupportVersion}") {
-        exclude module: 'hamcrest-core'
-        exclude module: 'junit-dep'
-    }
-    androidTestCompile("junit:junit:${project.junitVersion}") {
-        exclude module: 'hamcrest-core'
-    }
-    androidTestCompile "org.hamcrest:hamcrest-core:${project.hamcrestVersion}"
-    androidTestCompile "org.hamcrest:hamcrest-library:${project.hamcrestVersion}"
-    androidTestCompile "org.hamcrest:hamcrest-integration:${project.hamcrestVersion}"
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${project.espressoVersion}")
+    androidTestCompile("com.android.support.test:testing-support-lib:${project.testingSupportVersion}")
 
     // Robolectric
-    testCompile("junit:junit:${project.junitVersion}") {
-        exclude module: 'hamcrest-core'
-    }
-    testCompile "org.hamcrest:hamcrest-core:${project.hamcrestVersion}"
-    testCompile "org.hamcrest:hamcrest-library:${project.hamcrestVersion}"
-    testCompile "org.hamcrest:hamcrest-integration:${project.hamcrestVersion}"
+    testCompile "junit:junit:${project.junitVersion}"
 
     testCompile("org.robolectric:robolectric:${project.robolectricVersion}") {
         exclude module: 'classworlds'
