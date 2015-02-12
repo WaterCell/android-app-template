@@ -54,7 +54,7 @@ project.ext {
     eventbusVersion = '2.4.0'
 
     junitVersion = '4.12'
-    hamcrestVersion = '1.1'
+    hamcrestVersion = '1.3'
     robolectricVersion = '2.4'
     espressoVersion = '2.0'
     testingSupportVersion = '0.1'

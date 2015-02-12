@@ -124,6 +124,12 @@ dependencies {
         exclude module: 'hamcrest-core'
         exclude module: 'junit-dep'
     }
+    androidTestCompile("junit:junit:${project.junitVersion}") {
+        exclude module: 'hamcrest-core'
+    }
+    androidTestCompile "org.hamcrest:hamcrest-core:${project.hamcrestVersion}"
+    androidTestCompile "org.hamcrest:hamcrest-library:${project.hamcrestVersion}"
+    androidTestCompile "org.hamcrest:hamcrest-integration:${project.hamcrestVersion}"
 
     // Robolectric
     testCompile("junit:junit:${project.junitVersion}") {
