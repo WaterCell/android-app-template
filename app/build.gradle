@@ -109,9 +109,6 @@ dependencies {
     compile "de.greenrobot:eventbus:${project.eventbusVersion}"
 }
 
-// Copied from https://github.com/robolectric/deckard-gradle/blob/master/build.gradle
-apply plugin: 'android-unit-test'
-
 dependencies {
     // Espresso
     androidTestCompile("com.android.support.test.espresso:espresso-core:${project.espressoVersion}")
