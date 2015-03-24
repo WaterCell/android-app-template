@@ -9,7 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(application = TestApplication.class)
+@Config(application = TestApplication.class, emulateSdk = 18)
 public class MainActivityRobolectricTest {
 
     @Test

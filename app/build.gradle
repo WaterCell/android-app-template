@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "jp.water_cell.android.template"
         minSdkVersion 15
-        targetSdkVersion 18 // 19以上はRobolectricが未対応
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
 
