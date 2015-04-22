@@ -52,9 +52,17 @@
 -dontwarn org.joda.time.**
 
 # for Butter Knife (see http://jakewharton.github.io/butterknife/#proguard)
+-keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
 -keep class **$$ViewInjector { *; }
--keepnames class * { @butterknife.InjectView *;}
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
 
 # for (see https://github.com/greenrobot/EventBus#proguard-configuration)
 -keepclassmembers class ** {
