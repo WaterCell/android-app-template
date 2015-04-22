@@ -2,7 +2,7 @@ package jp.water_cell.android.template;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
@@ -25,7 +25,7 @@ import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 

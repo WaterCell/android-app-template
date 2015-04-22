@@ -8,7 +8,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,36 +24,32 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
+            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_butter_knife"
-                style="?android:buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:text="Butter Knife"
                 tools:ignore="HardcodedText" />
 
-            <Button
+            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_jpp"
-                style="?android:buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:text="Json Pull Parser"
                 tools:ignore="HardcodedText" />
 
-            <Button
+            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_ok"
-                style="?android:buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:text="Event Bus"
                 tools:ignore="HardcodedText" />
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/tv_display"
-                style="?android:textViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceMedium"
