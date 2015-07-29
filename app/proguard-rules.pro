@@ -54,7 +54,7 @@
 # for Butter Knife (see http://jakewharton.github.io/butterknife/#proguard)
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
--keep class **$$ViewInjector { *; }
+-keep class **$$ViewBinder { *; }
 
 -keepclasseswithmembernames class * {
     @butterknife.* <fields>;
