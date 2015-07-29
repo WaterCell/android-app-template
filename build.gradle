@@ -41,7 +41,7 @@ project.ext {
     // CIサーバなどでは -PdisablePreDex をつける。 preDexが省略されてビルドが速くなる
     preDexLibs = !project.hasProperty('disablePreDex')
 
-    supportPackageVersion = '22.2.0'
+    supportPackageVersion = '22.2.1'
     playServicesVersion = '7.5.0'
     jppVersion = '1.6.2'
 //    crashlyticsVersion = '2.4.0'
