@@ -125,6 +125,7 @@ dependencies {
     androidTestCompile "com.android.support.test.espresso:espresso-core:${project.espressoVersion}"
     androidTestCompile "com.android.support.test:runner:${project.testRunnerVersion}"
     androidTestCompile "com.android.support.test:rules:${project.testRulesVersion}"
+    androidTestCompile "com.android.support:support-annotations:${project.supportPackageVersion}"
 
     // Robolectric
     testCompile "org.robolectric:robolectric:${project.robolectricVersion}"
