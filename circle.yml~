@@ -1,3 +1,0 @@
-dependencies:
-  pre:
-    - echo y | android update sdk --no-ui --all --filter extra-android-support extra-android-m2repository --force
