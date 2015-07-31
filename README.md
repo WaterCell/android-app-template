@@ -1,4 +1,4 @@
-Android App Template
+Android App Template [![Circle CI](https://circleci.com/gh/WaterCell/android-app-template.svg?style=svg)](https://circleci.com/gh/WaterCell/android-app-template)
 ====
 
 Androidアプリのテンプレートです。
