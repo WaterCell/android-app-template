@@ -1,4 +1,4 @@
-Android App Template [![Build Status](https://travis-ci.org/WaterCell/android-app-template.svg)](https://travis-ci.org/WaterCell/android-app-template)
+Android App Template
 ====
 
 Androidアプリのテンプレートです。
