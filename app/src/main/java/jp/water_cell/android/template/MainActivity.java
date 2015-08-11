@@ -19,8 +19,8 @@ import java.io.StringWriter;
 import java.util.Random;
 import java.util.UUID;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
 import uk.co.senab.photoview.PhotoViewAttacher;
@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    @InjectView(R.id.tv_display)
+    @Bind(R.id.tv_display)
     TextView tvDisplay;
 
-    @InjectView(R.id.iv_picasso)
+    @Bind(R.id.iv_picasso)
     ImageView ivPicasso;
 
     private PhotoViewAttacher attacher;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);

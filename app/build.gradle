@@ -87,6 +87,19 @@ if (project.hasProperty('keyPassword')) {
     android.signingConfigs.release.keyPassword = keyPassword
 }
 
+sourceSets {
+    androidTest {
+        java {
+            srcDir 'src/androidTest/java'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
 dependencies {
     compile "com.google.android.gms:play-services:${project.playServicesVersion}"
     compile "com.android.support:appcompat-v7:${project.supportPackageVersion}"
@@ -110,33 +123,19 @@ dependencies {
     apt "com.jakewharton:butterknife:${project.butterKnifeVersion}"
 
     compile "de.greenrobot:eventbus:${project.eventbusVersion}"
-}
 
-dependencies {
     // Espresso
-    androidTestCompile("com.android.support.test.espresso:espresso-core:${project.espressoVersion}")
-    androidTestCompile("com.android.support.test:testing-support-lib:${project.testingSupportVersion}")
+    androidTestCompile "com.android.support.test.espresso:espresso-core:${project.espressoVersion}"
+    androidTestCompile "com.android.support.test:runner:${project.testRunnerVersion}"
+    androidTestCompile "com.android.support.test:rules:${project.testRulesVersion}"
+    androidTestCompile "com.android.support:support-annotations:${project.supportPackageVersion}"
 
     // Robolectric
+    testCompile "org.robolectric:robolectric:${project.robolectricVersion}"
     testCompile "junit:junit:${project.junitVersion}"
-
-    testCompile("org.robolectric:robolectric:${project.robolectricVersion}") {
-        exclude module: 'classworlds'
-        exclude module: 'commons-logging'
-        exclude module: 'httpclient'
-        exclude module: 'maven-artifact'
-        exclude module: 'maven-artifact-manager'
-        exclude module: 'maven-error-diagnostics'
-        exclude module: 'maven-model'
-        exclude module: 'maven-project'
-        exclude module: 'maven-settings'
-        exclude module: 'plexus-container-default'
-        exclude module: 'plexus-interpolation'
-        exclude module: 'plexus-utils'
-        exclude module: 'wagon-file'
-        exclude module: 'wagon-http-lightweight'
-        exclude module: 'wagon-provider-api'
-    }
+    testCompile "org.hamcrest:hamcrest-core:${project.hamcrestVersion}"
+    testCompile "org.hamcrest:hamcrest-library:${project.hamcrestVersion}"
+    testCompile "org.hamcrest:hamcrest-integration:${project.hamcrestVersion}"
 }
 
 tasks.withType(Test).whenTaskAdded {
@@ -161,3 +160,4 @@ task jacoco(type: JacocoReport, dependsOn: "testDebug") {
     sourceDirectories = files("${project.projectDir}/src/main/java")
     executionData = fileTree(dir: project.projectDir, includes: ['**/*.exec', '**/*.ec'])
 }
+

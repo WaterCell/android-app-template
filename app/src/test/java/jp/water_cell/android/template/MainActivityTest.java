@@ -2,15 +2,14 @@ package jp.water_cell.android.template;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
+import org.robolectric.RobolectricGradleTestRunner;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-@RunWith(RobolectricTestRunner.class)
-@Config(application = TestApplication.class, emulateSdk = 18)
-public class MainActivityRobolectricTest {
+// @Config用の設定はapp/src/test/resources/robolectric.propertiesに移動
+@RunWith(RobolectricGradleTestRunner.class)
+public class MainActivityTest {
 
     @Test
     public void JsonObjectが既定のJSONをパースできること() throws Exception {
