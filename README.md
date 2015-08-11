@@ -31,6 +31,12 @@ Androidアプリのテンプレートです。
 $ ./gradlew test[build_variant]
 ```
 
+#### カバレッジ測定
+
+```
+$ ./gradlew jacoco
+```
+
 ### Espressoテスト
 
 `app/src/androidTest/java/package_name/`以下に配置
@@ -39,6 +45,12 @@ $ ./gradlew test[build_variant]
 
 ```
 $ ./gradlew connectedAndroidTest
+```
+
+#### カバレッジ測定
+
+```
+$ ./gradlew createDebugCoverageReport
 ```
 
 ### Lintチェック

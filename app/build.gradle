@@ -2,6 +2,7 @@ apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 //apply plugin: 'io.fabric'
+apply plugin: "jacoco"
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -55,6 +56,8 @@ android {
             applicationIdSuffix '.debug'
 
             manifestPlaceholders = [google_maps_key: 'デバッグ用の証明書に対応するAPIキーをここに書く']
+
+            testCoverageEnabled = true
         }
         release {
             minifyEnabled true
@@ -139,3 +142,22 @@ tasks.withType(Test).whenTaskAdded {
     // play sevicesのVerifyError回避 (see https://github.com/robolectric/robolectric/issues/1186#issuecomment-53778180)
     it.jvmArgs '-noverify'
 }
+
+task jacoco(type: JacocoReport, dependsOn: "testDebug") {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+    classDirectories = fileTree(
+            dir: "${project.buildDir}/intermediates/classes/debug",
+            excludes: ['**/R.class',
+                       '**/R$*.class',
+                       '**/BuildConfig.class',
+                       '**/Manifest*.*',
+                       '**/*$$ViewBinder*.class',
+                       '**/*Gen.class',
+            ])
+    sourceDirectories = files("${project.projectDir}/src/main/java")
+    executionData = fileTree(dir: project.projectDir, includes: ['**/*.exec', '**/*.ec'])
+}
+
